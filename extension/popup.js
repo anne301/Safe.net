@@ -1,13 +1,14 @@
-chrome.storage.sync.get('color', function(data) {
-  changeColor.style.backgroundColor = data.color;
-  changeColor.setAttribute('value', data.color);
-});
+navigator.registerProtocolHandler("web+blockstack",
+	"https://burgers.example.com/?burger=%s",
+	"Blockstack handler");
 
-changeColor.onclick = function(element) {
-  let color = element.target.value;
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.tabs.executeScript(
-      tabs[0].id,
-      {code: 'document.body.style.backgroundColor = "' + color + '";'});
-  });
-};
+console.log('Hello');
+const button = document.getElementById('disable-button');
+console.log("button");
+
+const appConfig = new blockstack.AppConfig(["store_write"]);
+const userSession = new blockstack.UserSession({ appConfig: appConfig });
+
+document.getElementById('disable-button').addEventListener('click', function () {
+	userSession.redirectToSignIn();
+})

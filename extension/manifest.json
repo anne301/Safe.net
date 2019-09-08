@@ -22,6 +22,7 @@
       "128": "images/128.png"
      }
   },
+  "content_security_policy": "script-src 'self' https://unpkg.com/blockstack@19.4.0-beta.1/dist/blockstack.js; object-src 'self'",
   "icons": {
     "16": "images/16.png",
     "32": "images/32.png",
