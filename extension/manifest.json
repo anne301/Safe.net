@@ -2,10 +2,9 @@
   "name": "CitizenHacks",
   "version": "1.0",
   "description": "Protect sensitive information by receiving notifications when the chrome user tries to enter personal data!",
-  "permissions": [ "activeTab", "declarativeContent", "storage"],
+  "permissions": [ "tabs", "<all_urls>", "webRequest", "webRequestBlocking", "activeTab", "declarativeContent", "storage"],
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false 
+    "page": "background.html"
   },
   "content_scripts": [
     {
@@ -22,12 +21,13 @@
       "128": "images/128.png"
      }
   },
-  "content_security_policy": "script-src 'self' https://unpkg.com/blockstack@19.4.0-beta.1/dist/blockstack.js; object-src 'self'",
+  "content_security_policy": "script-src 'self' https://unpkg.com/blockstack@19.4.0-beta.1/dist/blockstack.js https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com; object-src 'self'; connect-src 'self' wss://*.firebaseio.com;",
   "icons": {
     "16": "images/16.png",
     "32": "images/32.png",
     "48": "images/48.png",
     "128": "images/128.png"
   }, 
+  "web_accessible_resources": [ "blocked.html" ],
   "manifest_version": 2
 }

@@ -19,7 +19,7 @@ block.style.padding = "1em";
 
 // content which goes inside block
 var blockContent = document.createElement("div");
-blockContent.innerHTML = "<p style='color:black;font-size:15px;font-family:Roboto'>This input form was blocked.</p><button id='requestButton' type='submit'style='border-radius:10px;cursor:pointer;max-height:4em;font-size:15px;margin:auto;display:block;padding:1em;color:white;transition: color 0.3s linear;font-family:Roboto;background-color:#8c52ff'>Request Access</button>";
+blockContent.innerHTML = "<p style='color:black;font-size:15px;font-family:Roboto'>This input form was blocked.</p><button id='requestButton' type='submit' style='border-radius:10px;cursor:pointer;max-height:4em;font-size:15px;margin:auto;display:block;padding:1em;color:white;transition: color 0.3s linear;font-family:Roboto;background-color:#8c52ff'>Request Access</button>";
 
 var closeButton = document.createElement("span");
 closeButton.style.marginLeft = "10px";
@@ -32,17 +32,6 @@ closeButton.onclick = function() {
   this.parentElement.style.display = "none";
 };
 closeButton.innerText = "x";
-/*
-document.getElementById("requestButton").onmouseover = function() {
-  document.getElementById("requestButton").style.color = "#8c52ff";
-  document.getElementById("requestButton").style.backgroundColor = "white";
-}
-
-document.getElementById("requestButton").onmouseout = function() {
-  document.getElementById("requestButton").style.color = "white";
-  document.getElementById("requestButton").style.backgroundColor = "#8c52ff";
-}
-*/
 
 block.appendChild(closeButton);
 block.appendChild(blockContent);
@@ -118,8 +107,6 @@ var titleCheck = function(input) {
       }
 }
 
-
-
 var inputs = document.getElementsByTagName('input');
 for (var i = 0; i < inputs.length; i++) {
     if (nameCheck(inputs[i]) || placeholderCheck(inputs[i]) || 
@@ -140,12 +127,11 @@ for (var i = 0; i < inputs.length; i++) {
       document.getElementById("dropdown").style.display = "block";
     }
     
-    //box disappears when mouse is not over box
-    /*
-    block.onmouseout = function() {
-      document.getElementById("dropdown").style.display = "none";
-    }
-    */
+    document.getElementById("requestButton").onclick = function() {
+      var url = window.location.toString();
+      console.log(url);
+      chrome.runtime.sendMessage({"url": url}); 
+    };
   }
 }
 
