@@ -7,3 +7,27 @@ p {
   font-family: 'Roboto', sans-serif;
   font-size: 24px;
 }
+
+center {
+	display: flex;
+	text-align: center;
+}
+
+button {
+	max-height: 4em;
+	font-size: 15px;
+	margin: auto;
+	display: block;
+	padding: 1em;
+	color: #ffffff;
+	transition: color 0.3s linear;
+	border: 1px solid #ffffff;
+	font-family: 'Roboto';
+	background-color: #8c52ff
+}
+button:hover {
+	color: #8c52ff;
+	border: 1px solid #ffffff;
+	background-color: #ffffff;
+	cursor: pointer;
+  }
