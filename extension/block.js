@@ -13,8 +13,9 @@ block.style.setProperty("z-index", 4);
 // content which goes inside block
 var blockContent = document.createElement("p");
 blockContent.innerHTML = "<p>This input form was blocked.</p><button type='submit'>Request Access</button>";
-
 block.appendChild(blockContent);
+
+//have to look through list of approved sites
 
 var inputs = document.getElementsByTagName('input');
 for (var i = 0; i < inputs.length; i++) {
